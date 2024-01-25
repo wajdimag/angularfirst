@@ -1,0 +1,41 @@
+{{title}}
+<br>
+<br>
+<br>
+<div [style.background]="color">Propriety Binfing</div>
+<br>
+<br>
+<input type="text" [(ngModel)]="color">
+<br>
+<br>
+<input type="text" placeholder="entrer ton minimum Prix"  [(ngModel)]="minPrice" (ngModelChange)="filterProducts()">
+<br>
+<br>
+<input type="submit" value="say hello" (click)="alert()">
+<br>
+<br>
+<table border="3">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Prix</th>
+        <th>Quantité</th>
+        <th>Like</th>
+        <th>action</th>
+    </tr>
+    <tr *ngFor="let product of filteredProducts; let i=index">
+        <td>{{product.id}}</td>
+        <td>{{product.title}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.like}}</td>
+        <td>
+            <input type="submit" value="like" (click)="incri(product.id)"
+                style="margin-right: 10px; margin-left: 10px;">
+            <input type="submit" value="buy" (click)="dislikes(i)" style="margin-right: 10px; margin-left: 10px;"
+                [disabled]="product.quantity==0">
+            <input type="submit" value="reduction" (click)="reduc(i)" style="margin-right: 10px; margin-left: 10px;">
+
+        </td>
+    </tr>
+</table>
